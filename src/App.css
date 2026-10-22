@@ -5,21 +5,72 @@
 }
 
 .topbar {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 15px max(24px, calc((100% - 1220px) / 2));
+  padding: 0 24px;
   background: #fff;
   border-bottom: 1px solid #d8e1eb;
-  color: #0756ad;
-  font-size: 20px;
 }
 
-.topbar span {
-  padding-left: 16px;
-  border-left: 1px solid #ccd6e2;
-  color: #4b5c73;
+.topbar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  max-width: 1220px;
+  min-height: 82px;
+  margin: 0 auto;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  color: #0756ad;
+  white-space: nowrap;
+}
+
+.brand-logo {
+  display: block;
+  width: 58px;
+  height: 58px;
+  object-fit: contain;
+}
+
+.brand-name {
+  font-size: 23px;
+  font-weight: 700;
+  letter-spacing: 0.035em;
+}
+
+.brand-divider {
+  margin: 0 3px;
+  color: #8292a7;
+  font-weight: 400;
+}
+
+.topbar-nav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #46576d;
   font-size: 14px;
+  white-space: nowrap;
+}
+
+.topbar-nav a {
+  color: #0756ad;
+  text-decoration: none;
+}
+
+.topbar-nav a:hover {
+  text-decoration: underline;
+}
+
+.breadcrumb-separator {
+  color: #a0acba;
+}
+
+.breadcrumb-current {
+  color: #46576d;
 }
 
 .container {
@@ -182,7 +233,47 @@ th {
   color: #a71f1f;
 }
 
+@media (max-width: 480px) {
+  .topbar-inner {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 5px;
+    padding: 9px 0;
+  }
+
+  .topbar-nav {
+    padding-left: 39px;
+  }
+}
+
 @media (max-width: 760px) {
+  .topbar {
+    padding: 0 14px;
+  }
+
+  .topbar-inner {
+    min-height: 68px;
+    gap: 14px;
+  }
+
+  .brand {
+    gap: 7px;
+  }
+
+  .brand-logo {
+    width: 46px;
+    height: 46px;
+  }
+
+  .brand-name {
+    font-size: 18px;
+  }
+
+  .topbar-nav {
+    gap: 6px;
+    font-size: 11px;
+  }
+
   .container {
     margin: 10px;
     padding: 14px;

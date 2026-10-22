@@ -564,8 +564,8 @@ function expand(spec: Spec, a: Atendimento) {
     return [{ label: `${spec.label} (sem item)`, value: undefined, item: undefined }]
   }
 
-  return list.map((item, index) => ({
-    label: `${spec.label} #${index + 1}`,
+  return list.map((item) => ({
+    label: spec.label,
     value: get(item, match[2]),
     item: isObject(item) ? item : undefined,
   }))
@@ -717,15 +717,22 @@ function App() {
   return (
     <div className="page">
       <header className="topbar">
-        <strong>FIEG | SENAI</strong>
-        <span>Consulta Nectar → SGT</span>
+        <div className="topbar-inner">
+          <div className="brand">
+            <img src="/Logo_Consulta_API.png" alt="" className="brand-logo" />
+            <span className="brand-name">FIEG <span className="brand-divider">|</span> SENAI</span>
+          </div>
+          <nav className="topbar-nav" aria-label="Navegação principal">
+            <a href="/" aria-current="page">Início</a>
+          </nav>
+        </div>
       </header>
 
       <main className="container">
-        <h1>Consultar atendimento</h1>
+        <h1>Consultar Api</h1>
 
         <form className="search" onSubmit={consultar}>
-          <label htmlFor="codigo">Código da oportunidade</label>
+          <label htmlFor="codigo">Código da Oportunidade Nectar</label>
           <input
             id="codigo"
             value={codigo}
@@ -733,12 +740,12 @@ function App() {
             placeholder="Digite o idOportunidade"
           />
           <button type="submit" disabled={carregando}>
-            {carregando ? 'Consultando…' : '⌕  Consultar'}
+            {carregando ? 'Consultando…' : 'Consultar'}
           </button>
         </form>
 
         {!carregando && results.length === 0 && !erro && (
-          <p className="hint">Insira o código da oportunidade para consultar as informações.</p>
+          <p className="hint">No NectarCRM, copie da URL o código exibido após “oportunidade” e insira-o aqui.</p>
         )}
         {carregando && <p>Consultando a API…</p>}
         {erro && <div className="error">{erro}</div>}

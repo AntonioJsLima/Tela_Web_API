@@ -1,3 +1,5 @@
+import { env } from 'node:process'
+
 export default {
   async fetch(request: Request): Promise<Response> {
     if (request.method !== 'GET') {
@@ -14,7 +16,7 @@ export default {
       )
     }
 
-    const apiToken = process.env.FIEG_API_TOKEN
+    const apiToken = env.FIEG_API_TOKEN
 
     if (!apiToken) {
       return Response.json(
